@@ -76,10 +76,20 @@
 
 ## 公開前にやること
 
-- [ ] **Formspree** に団体Gmail（nuinuifactory@gmail.com）で登録し、フォームIDを取得する
-- [ ] `index.html` の `action="https://formspree.io/f/XXXXXXXX"` を実際のIDに書き換える
+- [ ] **Googleフォーム**を団体Gmail（nuinuifactory@gmail.com）で作る
+- [ ] `index.html` の `<!-- GFORM_START -->` と `<!-- GFORM_END -->` のあいだに、
+      Googleフォームの埋め込みHTML（`<iframe …></iframe>`）を貼り付ける
 - [ ] `docs/アカウント台帳.md` を埋める
 - [ ] ダッシュボードから記事を1本、実際に公開してみる
+
+### お問い合わせフォームの差し替え方
+
+1. Googleフォームを開く → 右上の **送信** → **`< >`（埋め込み）** タブ
+2. 表示された `<iframe …></iframe>` をまるごとコピー
+3. `index.html` の `<!-- GFORM_START -->` と `<!-- GFORM_END -->` の**あいだ**に貼り付け
+
+貼り付けるまでは、代わりにメールでの案内が自動で表示されます。
+フォームの下が切れる場合は `assets/css/style.css` の `.gform iframe` の `min-height` を大きくしてください。
 
 ---
 
