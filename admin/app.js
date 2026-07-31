@@ -239,11 +239,49 @@ function show(view) {
 /* ---------------------------------------------------------------
    起動
    --------------------------------------------------------------- */
+/* いま開いているURLから「どのサイトにつなぐか」を自動で読み取る。
+   例: https://monijuan94-ops.github.io/nuinui-site/admin/
+       → owner = monijuan94-ops, repo = nuinui-site
+   これにより、利用者はユーザー名やリポジトリ名を入力しなくて済みます。      */
+function detectRepo() {
+  var host = location.hostname, parts = location.pathname.split("/").filter(Boolean);
+  if (/\.github\.io$/i.test(host)) {
+    var owner = host.replace(/\.github\.io$/i, "");
+    // /admin/ だけなら owner.github.io という名前のリポジトリ
+    var repo = (parts.length >= 2) ? parts[0] : host;
+    return { owner: owner, repo: repo, branch: "main" };
+  }
+  // 独自ドメインなどURLから判定できない場合は、HTMLに書いてある予備を使う
+  var meta = document.querySelector('meta[name="nuifac-repo"]');
+  if (meta && meta.content.indexOf("/") > 0) {
+    var p = meta.content.split("/");
+    return { owner: p[0], repo: p[1], branch: "main" };
+  }
+  return null;
+}
+
 function boot() {
+  var d = detectRepo();
+  if (d) {
+    $("detected").textContent = d.owner + " / " + d.repo;
+    $("cfg-owner").value = d.owner; $("cfg-repo").value = d.repo; $("cfg-branch").value = d.branch;
+  } else {
+    $("detected").textContent = "下の「くわしい設定」で入力してください";
+  }
+  // GitHubのトークン作成ページを、設定済みの状態で開くリンク
+  $("btn-open-github").href = "https://github.com/settings/tokens/new?scopes=repo" +
+    "&description=" + encodeURIComponent("ぬいふぁくサイトの記事ダッシュボード");
+
   if (!loadCfg() || !cfg.token) { show("setup"); return; }
   $("cfg-owner").value = cfg.owner; $("cfg-repo").value = cfg.repo; $("cfg-branch").value = cfg.branch;
   show("list");
   loadAll();
+}
+
+function setupMsg(text, ok) {
+  var el = $("setup-msg");
+  el.textContent = text;
+  el.className = "setup-msg setup-msg--" + (ok ? "ok" : "ng");
 }
 
 function loadAll() {
@@ -515,17 +553,41 @@ function wrapSel(before, after, placeholder) {
 document.addEventListener("DOMContentLoaded", function () {
 
   $("btn-save-cfg").addEventListener("click", function () {
+    var btn = this;
     var c = {
       token: $("cfg-token").value.trim(),
       owner: $("cfg-owner").value.trim(),
       repo: $("cfg-repo").value.trim(),
       branch: $("cfg-branch").value.trim() || "main"
     };
-    if (!c.token || !c.owner || !c.repo) { alert("すべての欄を入力してください"); return; }
+    if (!c.token) {
+      setupMsg("合いことばが入っていません。GitHubで出てきた文字を貼り付けてください。", false); return;
+    }
+    if (!c.owner || !c.repo) {
+      setupMsg("つなぎ先がわかりませんでした。下の「くわしい設定」で入力してください。", false); return;
+    }
     saveCfg(c);
-    api("").then(function () { toast("つながりました！"); show("list"); loadAll(); })
-      .catch(function (e) { alert("つながりませんでした：\n" + e.message); });
+    btn.disabled = true; btn.textContent = "つないでいます…";
+    api("")
+      .then(function () {
+        setupMsg("つながりました。記事を書きはじめられます。", true);
+        setTimeout(function () { show("list"); loadAll(); }, 900);
+      })
+      .catch(function (e) {
+        btn.disabled = false; btn.textContent = "つなぐ";
+        var m = e.message;
+        if (/トークン|Bad credentials/i.test(m)) {
+          m = "合いことばが正しくないようです。前後によけいな空白が入っていないか確認して、もう一度貼り付けてください。";
+        } else if (/Not Found/i.test(m)) {
+          m = "つなぎ先のサイトが見つかりませんでした（" + c.owner + " / " + c.repo + "）。" +
+              "下の「くわしい設定」で確認してください。";
+        }
+        setupMsg("つながりませんでした。" + m, false);
+      });
   });
+
+  // 貼り付けたらすぐエラー表示を消す
+  $("cfg-token").addEventListener("input", function () { $("setup-msg").className = "setup-msg hide"; });
 
   $("btn-logout").addEventListener("click", function () {
     if (!confirm("この端末からトークンを消します。よろしいですか？")) return;

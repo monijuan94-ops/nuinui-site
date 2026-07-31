@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow">
 <title>ぬいふぁく 記事ダッシュボード</title>
+<!-- 独自ドメインにしたときの予備。リポジトリを移したらここを書き換えてください -->
+<meta name="nuifac-repo" content="monijuan94-ops/nuinui-site">
 <link rel="icon" href="../assets/img/mascot-pink.svg" type="image/svg+xml">
 <style>
 :root{--pink:#ff8fb1;--pink-soft:#ffd9e4;--cream:#fdf8f3;--ink:#2f2a2c;--soft:#6b6266;--line:#e7e1e3;}
@@ -74,7 +76,48 @@ label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
   border-radius:50%;background:var(--pink);color:#fff;font-size:12px;font-weight:700;
   display:grid;place-content:center}
 code{background:#f5eff1;padding:2px 7px;border-radius:5px;font-size:13px}
-@media(max-width:860px){.editor{grid-template-columns:1fr}.preview{max-height:340px}}
+
+/* はじめての設定 */
+.hero-setup{text-align:center;padding:12px 20px 30px}
+.hero-setup img{width:78px;margin:0 auto 16px;display:block}
+.hero-setup h2{font-size:23px;margin-bottom:12px}
+.hero-setup p{margin:0 auto;max-width:560px}
+.connect-to{margin-top:18px!important;font-size:13px;color:var(--soft)}
+.connect-to b{color:var(--ink)}
+
+.step{display:flex;gap:18px;background:#fff;border:1px solid var(--line);
+      border-radius:14px;padding:24px 26px;margin-bottom:14px}
+.step__no{width:34px;height:34px;flex:none;border-radius:50%;background:var(--pink);
+      color:#fff;font-weight:700;display:grid;place-content:center;font-size:16px}
+.step__body{flex:1;min-width:0}
+.step__body h3{font-size:17px;margin-bottom:10px}
+.step__body p{margin:0}
+button.big,a.big{display:inline-block;margin-top:18px;padding:15px 40px;font-size:16px;
+      text-decoration:none;border-radius:10px}
+
+/* GitHub画面の見立て図 */
+.mock{background:var(--cream);border:1px dashed var(--line);border-radius:10px;padding:16px 18px}
+.mock__label{font-size:12px;font-weight:700;color:var(--soft);margin-bottom:9px}
+.mock__box{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.mock__pill{background:#fff;border:1px solid var(--line);border-radius:7px;padding:8px 16px;font-size:14px}
+.mock__btn{background:#1f883d;color:#fff;border-radius:7px;padding:9px 18px;font-size:14px;font-weight:700}
+.mock__hint{font-size:13px;color:#d1608a;font-weight:700}
+.mock__note{margin-top:10px!important;font-size:12px;color:var(--soft)}
+
+.setup-msg{margin-top:16px!important;padding:13px 16px;border-radius:9px;font-size:14px}
+.setup-msg--ok{background:#e8f6ee;color:#1f6b40}
+.setup-msg--ng{background:#fdeceb;color:#b3382f}
+
+.advanced{margin-top:26px;background:#fff;border:1px solid var(--line);border-radius:14px}
+.advanced summary{cursor:pointer;padding:18px 26px;font-size:14px;color:var(--soft)}
+.advanced__in{padding:0 26px 26px}
+.advanced__in p{font-size:14px}
+
+@media(max-width:860px){
+  .editor{grid-template-columns:1fr}.preview{max-height:340px}
+  .step{padding:20px 18px;gap:14px}
+  button.big,a.big{width:100%;text-align:center;padding:16px}
+}
 </style>
 </head>
 <body>
@@ -87,35 +130,101 @@ code{background:#f5eff1;padding:2px 7px;border-radius:5px;font-size:13px}
 
 <div class="wrap">
 
-<!-- ============ ① 初回設定 ============ -->
+<!-- ============ ① はじめての設定 ============ -->
 <section id="view-setup">
-  <div class="card">
-    <h2 style="font-size:19px;margin-bottom:6px;">はじめての方へ</h2>
-    <p class="muted" style="margin:0 0 22px;">この画面は最初の1回だけです。以降はこの端末のブラウザが覚えているので、すぐ書き始められます。</p>
 
-    <ol class="steps">
-      <li>GitHubにログインした状態で <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">こちらのページ</a> を開きます。</li>
-      <li><b>Repository access</b> で「Only select repositories」を選び、サイトのリポジトリを選びます。</li>
-      <li><b>Permissions → Repository permissions</b> の <code>Contents</code> を <b>Read and write</b> にします。</li>
-      <li>一番下の <b>Generate token</b> を押し、表示された <code>github_pat_…</code> という文字列をコピーします。</li>
-      <li>下の欄に貼り付けて「保存する」を押してください。</li>
-    </ol>
-
-    <div class="field" style="margin-top:26px;">
-      <label for="cfg-token">アクセストークン</label>
-      <input type="password" id="cfg-token" placeholder="github_pat_…" autocomplete="off">
-    </div>
-    <div class="row">
-      <div class="field"><label for="cfg-owner">GitHubのユーザー名 / 団体名</label>
-        <input type="text" id="cfg-owner" placeholder="nuinuifactory"></div>
-      <div class="field"><label for="cfg-repo">リポジトリ名</label>
-        <input type="text" id="cfg-repo" placeholder="nuinui-site"></div>
-      <div class="field"><label for="cfg-branch">ブランチ</label>
-        <input type="text" id="cfg-branch" value="main"></div>
-    </div>
-    <button class="btn-pink" id="btn-save-cfg">保存する</button>
-    <p class="muted" style="margin-top:18px;">※ トークンはこの端末のブラウザ内にのみ保存され、外部には送信されません。共用のパソコンでは使わないでください。</p>
+  <div class="hero-setup">
+    <img src="../assets/img/mascot-cream.svg" alt="">
+    <h2>はじめての設定</h2>
+    <p>記事を書けるようにするために、GitHubから<b>「合いことば」</b>をもらってきます。<br>
+       <b>この端末では、これが最初の1回きり</b>です。5分ほどで終わります。</p>
+    <p class="connect-to">つなぎ先のサイト：<b id="detected"></b></p>
   </div>
+
+  <!-- STEP 1 -->
+  <div class="step">
+    <div class="step__no">1</div>
+    <div class="step__body">
+      <h3>GitHubのページを開く</h3>
+      <p>下のボタンを押すと、新しいタブでGitHubが開きます。<br>
+         <span class="muted">ログインを求められたら、ぬいふぁくのアカウントでログインしてください。</span></p>
+      <a class="btn-pink big" id="btn-open-github" href="#" target="_blank" rel="noopener">GitHubのページを開く</a>
+    </div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step">
+    <div class="step__no">2</div>
+    <div class="step__body">
+      <h3>開いたページで、2つだけ操作します</h3>
+      <p class="muted" style="margin-bottom:14px;">むずかしそうな英語が並んでいますが、さわるのはこの2つだけです。ほかは変えなくて大丈夫です。</p>
+
+      <div class="mock">
+        <div class="mock__label">Expiration</div>
+        <div class="mock__box">
+          <span class="mock__pill">No expiration</span>
+          <span class="mock__hint">← ここを「No expiration」に変える</span>
+        </div>
+        <p class="mock__note">「30 days」のままだと1か月で使えなくなり、また設定し直しになります。</p>
+      </div>
+
+      <div class="mock" style="margin-top:16px;">
+        <div class="mock__label">ページの一番下</div>
+        <div class="mock__box">
+          <span class="mock__btn">Generate token</span>
+          <span class="mock__hint">← この緑のボタンを押す</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step">
+    <div class="step__no">3</div>
+    <div class="step__body">
+      <h3>出てきた文字を、ここに貼り付ける</h3>
+      <p><code>ghp_</code> ではじまる長い文字が画面に出ます。それをコピーして、下の欄に貼り付けてください。<br>
+         <span class="muted">この文字はページを閉じると二度と見られません。すぐ貼り付けてください（なくしても作り直せます）。</span></p>
+      <div class="field" style="margin-top:16px;">
+        <input type="password" id="cfg-token" placeholder="ghp_… をここに貼り付け" autocomplete="off">
+      </div>
+      <button class="btn-pink big" id="btn-save-cfg">つなぐ</button>
+      <p id="setup-msg" class="setup-msg hide"></p>
+    </div>
+  </div>
+
+  <details class="advanced">
+    <summary>うまくいかないとき／くわしい設定</summary>
+    <div class="advanced__in">
+      <p><b>「つながりませんでした」と出るとき</b><br>
+        文字の前後によけいな空白が入っていないか、コピーしそこねていないかを確認して、もう一度お試しください。
+        それでもだめなら、下の「つなぎ先」が合っているか確認してください。</p>
+
+      <p style="margin-top:18px;"><b>つなぎ先を手で指定する</b><br>
+        <span class="muted">ふだんは自動で入るので、さわる必要はありません。</span></p>
+      <div class="row" style="margin-top:10px;">
+        <div class="field"><label for="cfg-owner">GitHubのユーザー名／団体名</label>
+          <input type="text" id="cfg-owner"></div>
+        <div class="field"><label for="cfg-repo">リポジトリ名</label>
+          <input type="text" id="cfg-repo"></div>
+        <div class="field"><label for="cfg-branch">ブランチ</label>
+          <input type="text" id="cfg-branch" value="main"></div>
+      </div>
+
+      <p style="margin-top:18px;"><b>より安全な合いことばを使いたい方へ</b><br>
+        上の手順で作る合いことばは、そのアカウントの全リポジトリを操作できます。
+        このサイトだけに絞りたい場合は
+        <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">Fine-grained token</a>
+        のページで、Repository access →「Only select repositories」でこのサイトを選び、
+        Permissions → Repository permissions の <code>Contents</code> を <b>Read and write</b> にして作成してください。
+        できた <code>github_pat_…</code> を同じ欄に貼れば使えます。</p>
+    </div>
+  </details>
+
+  <p class="muted" style="margin-top:22px;text-align:center;">
+    合いことばはこの端末のブラウザの中だけに保存され、どこにも送信されません。<br>
+    共用のパソコンでは使わないでください。使い終わったら右上の「ログアウト」で消せます。
+  </p>
 </section>
 
 <!-- ============ ② 記事一覧 ============ -->
