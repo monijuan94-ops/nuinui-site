@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ぬいふぁく 記事ダッシュボード</title>
+<link rel="icon" href="../assets/img/mascot-pink.svg" type="image/svg+xml">
+<style>
+:root{--pink:#ff8fb1;--pink-soft:#ffd9e4;--cream:#fdf8f3;--ink:#2f2a2c;--soft:#6b6266;--line:#e7e1e3;}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;font-family:"Hiragino Sans","Noto Sans JP","Yu Gothic Medium",Meiryo,sans-serif;
+     color:var(--ink);background:var(--cream);font-size:15px;line-height:1.8}
+h1,h2,h3{margin:0;line-height:1.4}
+button{font:inherit;cursor:pointer;border:0;border-radius:8px;padding:11px 20px;transition:opacity .2s}
+button:hover{opacity:.85} button[disabled]{opacity:.45;cursor:not-allowed}
+.btn-pink{background:var(--pink);color:#fff;font-weight:700}
+.btn-line{background:#fff;border:1px solid var(--line)}
+.btn-danger{background:#fff;border:1px solid #e8b4b4;color:#c05a5a}
+input,textarea,select{font:inherit;width:100%;padding:11px 13px;border:1px solid var(--line);
+     border-radius:8px;background:#fff;color:var(--ink)}
+input:focus,textarea:focus,select:focus{outline:2px solid var(--pink);border-color:transparent}
+label{display:block;font-size:13px;font-weight:700;margin-bottom:7px}
+.field{margin-bottom:20px}
+.row{display:flex;gap:16px;flex-wrap:wrap}
+.row>*{flex:1;min-width:180px}
+.muted{color:var(--soft);font-size:13px}
+
+/* ヘッダー */
+.top{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:10}
+.top__in{max-width:1140px;margin:auto;padding:14px 20px;display:flex;align-items:center;gap:14px}
+.top__in img{width:30px}
+.top h1{font-size:16px;flex:1}
+.wrap{max-width:1140px;margin:auto;padding:28px 20px 90px}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:26px}
+.card+.card{margin-top:18px}
+
+/* 一覧 */
+.tabs{display:flex;gap:8px;margin-bottom:20px}
+.tab{background:#fff;border:1px solid var(--line);border-radius:999px;padding:9px 24px;font-size:14px}
+.tab.on{background:var(--pink);color:#fff;border-color:var(--pink);font-weight:700}
+.item{display:flex;align-items:center;gap:16px;padding:15px 4px;border-bottom:1px solid var(--line)}
+.item:last-child{border-bottom:0}
+.item__thumb{width:74px;height:56px;border-radius:7px;object-fit:cover;background:var(--pink-soft);flex:none}
+.item__main{flex:1;min-width:0}
+.item__title{font-weight:700;font-size:15px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pill{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:700}
+.pill--pub{background:var(--pink);color:#fff}
+.pill--draft{background:#eee;color:var(--soft)}
+
+/* エディタ */
+.editor{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.toolbar button{background:#fff;border:1px solid var(--line);padding:7px 13px;font-size:13px;border-radius:7px}
+#body{min-height:420px;font-family:ui-monospace,"SF Mono",Menlo,Consolas,monospace;font-size:14px;line-height:1.9;resize:vertical}
+.preview{background:#fff;border:1px solid var(--line);border-radius:8px;padding:22px;overflow:auto;max-height:640px}
+.preview h2{font-size:19px;padding-left:13px;border-left:4px solid var(--pink);margin:1.8em 0 .6em}
+.preview h3{font-size:17px;margin:1.5em 0 .5em}
+.preview p{margin:0 0 1.2em}
+.preview img{max-width:100%;border-radius:10px;display:block}
+.preview blockquote{margin:0 0 1.2em;padding-left:16px;border-left:3px solid var(--line);color:var(--soft)}
+.preview ul{padding-left:1.4em;margin:0 0 1.2em}
+
+/* バー・通知 */
+.bar{position:fixed;left:0;right:0;bottom:0;background:#fff;border-top:1px solid var(--line);
+     padding:13px 20px;display:flex;gap:12px;justify-content:flex-end;align-items:center;z-index:20}
+.bar .muted{margin-right:auto}
+.toast{position:fixed;left:50%;bottom:84px;transform:translateX(-50%);background:var(--ink);color:#fff;
+       padding:13px 26px;border-radius:999px;font-size:14px;z-index:99;box-shadow:0 6px 24px rgba(0,0,0,.18)}
+.hide{display:none!important}
+.steps{counter-reset:s;padding-left:0;list-style:none}
+.steps li{counter-increment:s;position:relative;padding-left:34px;margin-bottom:14px}
+.steps li::before{content:counter(s);position:absolute;left:0;top:2px;width:23px;height:23px;
+  border-radius:50%;background:var(--pink);color:#fff;font-size:12px;font-weight:700;
+  display:grid;place-content:center}
+code{background:#f5eff1;padding:2px 7px;border-radius:5px;font-size:13px}
+@media(max-width:860px){.editor{grid-template-columns:1fr}.preview{max-height:340px}}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="top__in">
+  <img src="../assets/img/mascot-pink.svg" alt="">
+  <h1>ぬいふぁく 記事ダッシュボード</h1>
+  <button class="btn-line hide" id="btn-logout">ログアウト</button>
+</div></div>
+
+<div class="wrap">
+
+<!-- ============ ① 初回設定 ============ -->
+<section id="view-setup">
+  <div class="card">
+    <h2 style="font-size:19px;margin-bottom:6px;">はじめての方へ</h2>
+    <p class="muted" style="margin:0 0 22px;">この画面は最初の1回だけです。以降はこの端末のブラウザが覚えているので、すぐ書き始められます。</p>
+
+    <ol class="steps">
+      <li>GitHubにログインした状態で <a href="https://github.com/settings/personal-access-tokens/new" target="_blank" rel="noopener">こちらのページ</a> を開きます。</li>
+      <li><b>Repository access</b> で「Only select repositories」を選び、サイトのリポジトリを選びます。</li>
+      <li><b>Permissions → Repository permissions</b> の <code>Contents</code> を <b>Read and write</b> にします。</li>
+      <li>一番下の <b>Generate token</b> を押し、表示された <code>github_pat_…</code> という文字列をコピーします。</li>
+      <li>下の欄に貼り付けて「保存する」を押してください。</li>
+    </ol>
+
+    <div class="field" style="margin-top:26px;">
+      <label for="cfg-token">アクセストークン</label>
+      <input type="password" id="cfg-token" placeholder="github_pat_…" autocomplete="off">
+    </div>
+    <div class="row">
+      <div class="field"><label for="cfg-owner">GitHubのユーザー名 / 団体名</label>
+        <input type="text" id="cfg-owner" placeholder="nuinuifactory"></div>
+      <div class="field"><label for="cfg-repo">リポジトリ名</label>
+        <input type="text" id="cfg-repo" placeholder="nuinui-site"></div>
+      <div class="field"><label for="cfg-branch">ブランチ</label>
+        <input type="text" id="cfg-branch" value="main"></div>
+    </div>
+    <button class="btn-pink" id="btn-save-cfg">保存する</button>
+    <p class="muted" style="margin-top:18px;">※ トークンはこの端末のブラウザ内にのみ保存され、外部には送信されません。共用のパソコンでは使わないでください。</p>
+  </div>
+</section>
+
+<!-- ============ ② 記事一覧 ============ -->
+<section id="view-list" class="hide">
+  <div class="tabs">
+    <button class="tab on" data-type="news">お知らせ</button>
+    <button class="tab"    data-type="blog">ブログ</button>
+    <span style="flex:1"></span>
+    <button class="btn-pink" id="btn-new">＋ 新しい記事を書く</button>
+  </div>
+  <div class="card"><div id="list"><p class="muted">読み込み中…</p></div></div>
+  <p style="margin-top:20px;text-align:right;">
+    <button class="btn-line" id="btn-rebuild">サイト全体を作り直す</button>
+  </p>
+  <p class="muted" style="text-align:right;margin-top:4px;">デザインを変更したあと、過去の記事にも反映したいときに押します</p>
+</section>
+
+<!-- ============ ③ 記事編集 ============ -->
+<section id="view-edit" class="hide">
+  <div class="card">
+    <div class="row">
+      <div class="field" style="flex:3"><label for="title">タイトル</label>
+        <input type="text" id="title" placeholder="例）中京ふぁくとりー、開催しました！"></div>
+      <div class="field"><label for="date">日付</label><input type="date" id="date"></div>
+      <div class="field" id="cat-wrap"><label for="category">カテゴリー</label>
+        <select id="category"><option>NEWS</option><option>EVENT</option><option>VOICE</option></select></div>
+    </div>
+
+    <div class="field">
+      <label for="excerpt">かんたんな紹介文（一覧に出る2〜3行）</label>
+      <input type="text" id="excerpt" placeholder="例）はじめての中京開催。40人のみなさんとぬいを作りました。">
+    </div>
+
+    <div class="field">
+      <label>カバー写真（一覧のサムネイルになります）</label>
+      <div class="row" style="align-items:center;">
+        <input type="text" id="cover" placeholder="写真を選ぶと自動で入ります" style="flex:3">
+        <button class="btn-line" id="btn-cover" style="flex:none">写真を選ぶ</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <label for="body">本文</label>
+      <div class="toolbar">
+        <button data-md="h2">大見出し</button>
+        <button data-md="h3">小見出し</button>
+        <button data-md="b">太字</button>
+        <button data-md="link">リンク</button>
+        <button data-md="ul">箇条書き</button>
+        <button data-md="quote">引用</button>
+        <button class="btn-line" id="btn-img" style="border-color:var(--pink);color:#d1608a;font-weight:700">画像を入れる</button>
+      </div>
+      <div class="editor">
+        <textarea id="body" placeholder="ここに本文を書いてください。&#10;&#10;空の行を1行はさむと、段落が分かれます。"></textarea>
+        <div class="preview" id="preview"></div>
+      </div>
+      <p class="muted" style="margin-top:8px;">右側は実際の見え方です。書きながら確認できます。</p>
+    </div>
+
+    <details>
+      <summary class="muted" style="cursor:pointer">詳しい設定（URLの文字列）</summary>
+      <div class="field" style="margin-top:14px;max-width:420px;">
+        <label for="slug">URL末尾</label>
+        <input type="text" id="slug">
+        <p class="muted">半角英数字とハイフンのみ。公開後の変更はリンク切れの原因になります。</p>
+      </div>
+    </details>
+  </div>
+</section>
+
+</div>
+
+<!-- 下部の操作バー -->
+<div class="bar hide" id="bar">
+  <span class="muted" id="bar-note"></span>
+  <button class="btn-danger hide" id="btn-delete">削除</button>
+  <button class="btn-line" id="btn-back">一覧へ戻る</button>
+  <button class="btn-line" id="btn-draft">下書き保存</button>
+  <button class="btn-pink" id="btn-publish">公開する</button>
+</div>
+
+<input type="file" id="file" accept="image/*" class="hide">
+<script src="app.js"></script>
+</body>
+</html>
