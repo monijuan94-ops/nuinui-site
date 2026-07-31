@@ -218,6 +218,29 @@ p  { margin: 0; }
 .form__submit button[disabled] { opacity: .5; cursor: progress; }
 
 /* ==========================================================================
+   Googleフォームの埋め込み
+   ========================================================================== */
+.gform iframe {
+  width: 100%;
+  min-height: 900px;      /* フォームの下が切れる場合は、この数字を大きくしてください */
+  border: 0;
+  border-radius: var(--radius);
+  background: #fff;
+}
+.gform:empty { display: none; }
+.gform-alt { margin-top: 20px; font-size: 13px; color: var(--ink-soft); text-align: center; }
+.gform-alt a { color: #d1608a; }
+
+/* フォーム未設定のあいだに出る案内 */
+.gform-fallback {
+  text-align: center; background: #fff; border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 54px 8%;
+}
+.gform-fallback img { width: 82px; margin: 0 auto 26px; }
+.gform-fallback .mail { margin-top: 22px; font-size: clamp(15px, 3vw, 19px); font-weight: 700; }
+.gform-fallback .mail a { color: #d1608a; }
+
+/* ==========================================================================
    記事ページ
    ========================================================================== */
 .article { width: min(88%, 760px); margin: 90px auto 0; }
