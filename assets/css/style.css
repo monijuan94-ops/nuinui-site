@@ -43,15 +43,18 @@ p  { margin: 0; }
 .section { padding-block: var(--gap-section); }
 .section--cream { background: var(--cream); }
 
+/* ページ内リンクで飛んだとき、固定ヘッダーの下に見出しが隠れないようにする */
+:target, .section, [id] { scroll-margin-top: 96px; }
+
 /* 縦書きラベル（「ご挨拶」など、セクション脇の飾り） */
 .vlabel {
   writing-mode: vertical-rl;
+  white-space: nowrap;          /* 2列に折り返さないように */
   font-size: 14px;
   letter-spacing: 0.3em;
   color: var(--ink-soft);
   padding-right: 22px;
   border-right: 1px solid var(--line);
-  height: 5.5em;
   flex: none;
 }
 .section-head { display: flex; gap: 40px; align-items: flex-start; margin-bottom: 56px; }
@@ -131,8 +134,10 @@ p  { margin: 0; }
 .hero { position: relative; }
 .hero__img img { width: 100%; }
 .hero__copy {
-  position: absolute; inset: 0; display: grid; place-content: center; text-align: center;
+  position: absolute; inset: 0;
+  display: grid; align-content: center; justify-items: center; text-align: center;
   padding-inline: 6%;
+  padding-bottom: 16%;   /* くまと重ならないよう、少し上寄せ */
 }
 .hero__copy h1 {
   color: #fff; font-size: clamp(28px, 6vw, 60px); letter-spacing: .08em;
