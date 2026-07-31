@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+
+<rect width="400" height="300" fill="#fff8f0"/><circle cx="60" cy="55" r="40" fill="#ffd3e1" opacity="0.45"/><circle cx="345" cy="250" r="46" fill="#b8e6d6" opacity="0.4"/><ellipse cx="174.7" cy="214.39999999999998" rx="14.95" ry="10.35" fill="#ff8fb1"/>
+<ellipse cx="225.3" cy="214.39999999999998" rx="14.95" ry="10.35" fill="#ff8fb1"/>
+<circle cx="160.9" cy="104.0" r="17.25" fill="#ff8fb1"/>
+<circle cx="239.1" cy="104.0" r="17.25" fill="#ff8fb1"/>
+<ellipse cx="200" cy="156.9" rx="62.099999999999994" ry="57.49999999999999" fill="#ff8fb1"/>
+<ellipse cx="142.5" cy="175.3" rx="14.95" ry="19.549999999999997" fill="#ff8fb1"/>
+<ellipse cx="257.5" cy="175.3" rx="14.95" ry="19.549999999999997" fill="#ff8fb1"/>
+<line x1="200" y1="108.6" x2="200" y2="133.9" stroke="#5a4a52" stroke-width="1.38" opacity="0.25"/>
+<ellipse cx="165.5" cy="163.8" rx="10.35" ry="6.8999999999999995" fill="#ff8fb1" opacity="0.55"/>
+<ellipse cx="234.5" cy="163.8" rx="10.35" ry="6.8999999999999995" fill="#ff8fb1" opacity="0.55"/>
+<circle cx="186.2" cy="150" r="5.75" fill="#5a4a52"/><circle cx="213.8" cy="150" r="5.75" fill="#5a4a52"/><circle cx="184.475" cy="148.275" r="1.8399999999999999" fill="#fff"/><circle cx="212.075" cy="148.275" r="1.8399999999999999" fill="#fff"/>
+<path d="M200 163.8 c-5.75 -8.049999999999999 -17.25 -1.15 -10.35 6.8999999999999995 l10.35 10.35 10.35 -10.35 c6.8999999999999995 -8.049999999999999 -4.6 -14.95 -10.35 -6.8999999999999995 z" fill="#fff"/><circle cx="120" cy="120" r="7" fill="#ffe08a"/><circle cx="285" cy="130" r="7" fill="#a9d4f5"/><circle cx="135" cy="210" r="6" fill="#b8e6d6"/><circle cx="280" cy="210" r="6" fill="#ffe08a"/><path d="M205 56 l-12 -16 h24 z" fill="#a9d4f5"/><text x="200" y="284" text-anchor="middle" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="16" fill="#8a7680">デコレーション</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="400" height="300">
+  <rect width="400" height="300" fill="#fff8f0"/>
+  <circle cx="60" cy="55" r="42" fill="#b8e6d6" opacity="0.45"/>
+  <circle cx="345" cy="245" r="46" fill="#ffd3e1" opacity="0.5"/>
+  <ellipse cx="200" cy="215" rx="150" ry="34" fill="#ffe08a" opacity="0.45"/>
+  <g transform="translate(110,150)">
+    <circle cx="0" cy="-30" r="26" fill="#ffd3e1"/>
+    <circle cx="-9" cy="-32" r="3" fill="#5a4a52"/><circle cx="9" cy="-32" r="3" fill="#5a4a52"/>
+    <path d="M-7 -24 q7 6 14 0" fill="none" stroke="#5a4a52" stroke-width="2" stroke-linecap="round"/>
+    <path d="M-30 40 q30 -40 60 0 z" fill="#a9d4f5"/>
+  </g>
+  <g transform="translate(200,140)">
+    <circle cx="0" cy="-30" r="28" fill="#b8e6d6"/>
+    <circle cx="-10" cy="-32" r="3" fill="#5a4a52"/><circle cx="10" cy="-32" r="3" fill="#5a4a52"/>
+    <path d="M-7 -24 q7 6 14 0" fill="none" stroke="#5a4a52" stroke-width="2" stroke-linecap="round"/>
+    <path d="M-32 44 q32 -42 64 0 z" fill="#ff8fb1"/>
+  </g>
+  <g transform="translate(292,152)">
+    <circle cx="0" cy="-30" r="25" fill="#ffe08a"/>
+    <circle cx="-8" cy="-32" r="3" fill="#5a4a52"/><circle cx="8" cy="-32" r="3" fill="#5a4a52"/>
+    <path d="M-7 -24 q7 6 14 0" fill="none" stroke="#5a4a52" stroke-width="2" stroke-linecap="round"/>
+    <path d="M-28 40 q28 -38 56 0 z" fill="#a9d4f5"/>
+  </g>
+  <ellipse cx="200" cy="240" rx="120" ry="26" fill="#e9e2d8"/>
+  <text x="200" y="288" text-anchor="middle" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="16" fill="#8a7680">ふぁくとりーめんばー</text>
+</svg>

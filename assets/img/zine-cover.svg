@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 480" width="360" height="480">
+
+<rect width="360" height="480" fill="#fff8f0"/><rect x="30" y="28" width="300" height="424" rx="18" fill="#fde3ec"/><text x="180" y="92" text-anchor="middle" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="30" font-weight="800" fill="#ff8fb1">ぬいぬい</text><text x="180" y="128" text-anchor="middle" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="30" font-weight="800" fill="#5a4a52">ふぁくとりー</text><ellipse cx="92.4" cy="294.8" rx="10.4" ry="7.2" fill="#b8e6d6"/>
+<ellipse cx="127.6" cy="294.8" rx="10.4" ry="7.2" fill="#b8e6d6"/>
+<circle cx="82.8" cy="218.0" r="12.0" fill="#b8e6d6"/>
+<circle cx="137.2" cy="218.0" r="12.0" fill="#b8e6d6"/>
+<ellipse cx="110" cy="254.8" rx="43.2" ry="40.0" fill="#b8e6d6"/>
+<ellipse cx="70.0" cy="267.6" rx="10.4" ry="13.600000000000001" fill="#b8e6d6"/>
+<ellipse cx="150.0" cy="267.6" rx="10.4" ry="13.600000000000001" fill="#b8e6d6"/>
+<line x1="110" y1="221.2" x2="110" y2="238.8" stroke="#5a4a52" stroke-width="0.96" opacity="0.25"/>
+<ellipse cx="86.0" cy="259.6" rx="7.2" ry="4.800000000000001" fill="#ff8fb1" opacity="0.55"/>
+<ellipse cx="134.0" cy="259.6" rx="7.2" ry="4.800000000000001" fill="#ff8fb1" opacity="0.55"/>
+<path d="M94.0 248.4 q6.4 6.4 12.8 0" fill="none" stroke="#5a4a52" stroke-width="2.4000000000000004" stroke-linecap="round"/><path d="M113.2 248.4 q6.4 6.4 12.8 0" fill="none" stroke="#5a4a52" stroke-width="2.4000000000000004" stroke-linecap="round"/>
+<path d="M105.2 261.2 q4.800000000000001 4.800000000000001 9.600000000000001 0" fill="none" stroke="#5a4a52" stroke-width="1.92" stroke-linecap="round"/><ellipse cx="159.1" cy="293.2" rx="12.35" ry="8.549999999999999" fill="#ff8fb1"/>
+<ellipse cx="200.9" cy="293.2" rx="12.35" ry="8.549999999999999" fill="#ff8fb1"/>
+<circle cx="147.7" cy="202.0" r="14.25" fill="#ff8fb1"/>
+<circle cx="212.3" cy="202.0" r="14.25" fill="#ff8fb1"/>
+<ellipse cx="180" cy="245.7" rx="51.3" ry="47.5" fill="#ff8fb1"/>
+<ellipse cx="132.5" cy="260.9" rx="12.35" ry="16.15" fill="#ff8fb1"/>
+<ellipse cx="227.5" cy="260.9" rx="12.35" ry="16.15" fill="#ff8fb1"/>
+<line x1="180" y1="205.8" x2="180" y2="226.7" stroke="#5a4a52" stroke-width="1.14" opacity="0.25"/>
+<ellipse cx="151.5" cy="251.4" rx="8.549999999999999" ry="5.699999999999999" fill="#ff8fb1" opacity="0.55"/>
+<ellipse cx="208.5" cy="251.4" rx="8.549999999999999" ry="5.699999999999999" fill="#ff8fb1" opacity="0.55"/>
+<circle cx="168.6" cy="240" r="4.75" fill="#5a4a52"/><circle cx="191.4" cy="240" r="4.75" fill="#5a4a52"/><circle cx="167.175" cy="238.575" r="1.52" fill="#fff"/><circle cx="189.975" cy="238.575" r="1.52" fill="#fff"/>
+<path d="M180 251.4 c-4.75 -6.6499999999999995 -14.25 -0.95 -8.549999999999999 5.699999999999999 l8.549999999999999 8.549999999999999 8.549999999999999 -8.549999999999999 c5.699999999999999 -6.6499999999999995 -3.8 -12.35 -8.549999999999999 -5.699999999999999 z" fill="#fff"/><ellipse cx="232.4" cy="294.8" rx="10.4" ry="7.2" fill="#a9d4f5"/>
+<ellipse cx="267.6" cy="294.8" rx="10.4" ry="7.2" fill="#a9d4f5"/>
+<circle cx="222.8" cy="218.0" r="12.0" fill="#a9d4f5"/>
+<circle cx="277.2" cy="218.0" r="12.0" fill="#a9d4f5"/>
+<ellipse cx="250" cy="254.8" rx="43.2" ry="40.0" fill="#a9d4f5"/>
+<ellipse cx="210.0" cy="267.6" rx="10.4" ry="13.600000000000001" fill="#a9d4f5"/>
+<ellipse cx="290.0" cy="267.6" rx="10.4" ry="13.600000000000001" fill="#a9d4f5"/>
+<line x1="250" y1="221.2" x2="250" y2="238.8" stroke="#5a4a52" stroke-width="0.96" opacity="0.25"/>
+<ellipse cx="226.0" cy="259.6" rx="7.2" ry="4.800000000000001" fill="#ff8fb1" opacity="0.55"/>
+<ellipse cx="274.0" cy="259.6" rx="7.2" ry="4.800000000000001" fill="#ff8fb1" opacity="0.55"/>
+<circle cx="240.4" cy="250" r="4.0" fill="#5a4a52"/><circle cx="259.6" cy="250" r="4.0" fill="#5a4a52"/><circle cx="239.2" cy="248.8" r="1.2800000000000002" fill="#fff"/><circle cx="258.4" cy="248.8" r="1.2800000000000002" fill="#fff"/>
+<path d="M245.2 261.2 q4.800000000000001 4.800000000000001 9.600000000000001 0" fill="none" stroke="#5a4a52" stroke-width="1.92" stroke-linecap="round"/>
+<path d="M250 274.0 l2.4000000000000004 4.800000000000001 5.6000000000000005 1 -4.0 4.0 0.8 5.6000000000000005 -4.800000000000001 -2.4000000000000004 -4.800000000000001 2.4000000000000004 0.8 -5.6000000000000005 -4.0 -4.0 5.6000000000000005 -1 z" fill="#fff" opacity="0.9"/><rect x="96" y="320" width="168" height="2" fill="#ff8fb1" opacity="0.4"/><text x="180" y="360" text-anchor="middle" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="15" fill="#8a7680">てしごとの ぬいぐるみ ワークショップ</text><text x="180" y="410" text-anchor="middle" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="13" fill="#b09aa2">2年間の活動を振り返る BOOK</text>
+</svg>
