@@ -2,8 +2,8 @@
 
 ぬいぐるみ作りワークショップ団体「ぬいぬいふぁくとりー」のWebサイトです。
 
-- **サイト**: （公開後にURLをここに書く）
-- **記事ダッシュボード**: `/admin/`
+- **サイト**: https://monijuan94-ops.github.io/nuinui-site/
+- **記事ダッシュボード**: https://monijuan94-ops.github.io/nuinui-site/admin/
 
 ---
 
