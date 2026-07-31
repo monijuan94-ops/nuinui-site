@@ -23,44 +23,14 @@
     });
   }
 
-  /* ---------- 2. お問い合わせフォーム ---------- */
-  var form = document.getElementById("contact-form");
-  if (!form) return;
-
-  form.addEventListener("submit", function (e) {
-    e.preventDefault();
-    var endpoint = form.getAttribute("action");
-
-    // Formspree未設定のうちは、間違って送信されないよう案内だけ出す
-    if (!endpoint || endpoint.indexOf("XXXXXXXX") !== -1) {
-      alert(
-        "お問い合わせフォームはまだ設定中です。\n" +
-        "お急ぎの方は nuinuifactory@gmail.com までメールでご連絡ください。"
-      );
-      return;
-    }
-
-    var submit = form.querySelector("button[type=submit]");
-    var label  = submit.textContent;
-    submit.disabled = true;
-    submit.textContent = "送信中…";
-
-    fetch(endpoint, {
-      method: "POST",
-      body: new FormData(form),
-      headers: { Accept: "application/json" }
-    })
-      .then(function (res) {
-        if (!res.ok) throw new Error("送信に失敗しました");
-        location.href = form.dataset.thanks || "/thanks.html";
-      })
-      .catch(function () {
-        alert(
-          "送信できませんでした。通信環境をご確認のうえ、もう一度お試しください。\n" +
-          "解決しない場合は nuinuifactory@gmail.com までご連絡ください。"
-        );
-        submit.disabled = false;
-        submit.textContent = label;
-      });
-  });
+  /* ---------- 2. お問い合わせ（Googleフォーム） ----------
+     Googleフォームが貼られていればそれを表示し、まだなら
+     メールでの案内を出す。切り替えは自動なので、フォームを
+     貼り付けるだけで案内のほうは消えます。                        */
+  var slot     = document.querySelector(".gform");
+  var fallback = document.querySelector(".gform-fallback");
+  if (slot && fallback) {
+    var embedded = !!slot.querySelector("iframe");
+    fallback.style.display = embedded ? "none" : "";
+  }
 })();
