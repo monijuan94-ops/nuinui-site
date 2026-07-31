@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 120" width="440" height="120">
+
+<g transform="translate(56,60) scale(0.95)"><ellipse cx="-13.64" cy="34.72" rx="8.06" ry="5.58" fill="#ff8fb1"/>
+<ellipse cx="13.64" cy="34.72" rx="8.06" ry="5.58" fill="#ff8fb1"/>
+<circle cx="-21.08" cy="-24.8" r="9.3" fill="#ff8fb1"/>
+<circle cx="21.08" cy="-24.8" r="9.3" fill="#ff8fb1"/>
+<ellipse cx="0" cy="3.7199999999999998" rx="33.48" ry="31.0" fill="#ff8fb1"/>
+<ellipse cx="-31.0" cy="13.64" rx="8.06" ry="10.54" fill="#ff8fb1"/>
+<ellipse cx="31.0" cy="13.64" rx="8.06" ry="10.54" fill="#ff8fb1"/>
+<line x1="0" y1="-22.32" x2="0" y2="-8.68" stroke="#5a4a52" stroke-width="0.744" opacity="0.25"/>
+<ellipse cx="-18.6" cy="7.4399999999999995" rx="5.58" ry="3.7199999999999998" fill="#ff8fb1" opacity="0.55"/>
+<ellipse cx="18.6" cy="7.4399999999999995" rx="5.58" ry="3.7199999999999998" fill="#ff8fb1" opacity="0.55"/>
+<circle cx="-7.4399999999999995" cy="0" r="3.1" fill="#5a4a52"/><circle cx="7.4399999999999995" cy="0" r="3.1" fill="#5a4a52"/><circle cx="-8.37" cy="-0.9299999999999999" r="0.992" fill="#fff"/><circle cx="6.51" cy="-0.9299999999999999" r="0.992" fill="#fff"/>
+<path d="M0 7.4399999999999995 c-3.1 -4.34 -9.3 -0.62 -5.58 3.7199999999999998 l5.58 5.58 5.58 -5.58 c3.7199999999999998 -4.34 -2.48 -8.06 -5.58 -3.7199999999999998 z" fill="#fff"/></g><text x="118" y="56" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="30" font-weight="800" fill="#ff8fb1" letter-spacing="1">ぬいぬいふぁくとりー</text><text x="120" y="82" font-family="'Hiragino Maru Gothic ProN',sans-serif" font-size="11" fill="#8a7680" letter-spacing="2">NUI NUI FACTORY ｜ ぬいぐるみを作る工場</text>
+</svg>
